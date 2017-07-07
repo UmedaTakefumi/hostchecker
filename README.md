@@ -12,10 +12,10 @@
 ```
 $ ./hostchecker -url http://www.example.jp
 URL:
-  http://www.example.co.jp 
+  http://www.example.jp 
 
 Host:
-  www.example.co.jp
+  www.example.jp
 
 IPAddress:
   9999:9999:9999:80e::2003
