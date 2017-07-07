@@ -6,7 +6,10 @@ import (
 	"log"
   "net"
 	"net/url"
-	//  "os"
+  "net/http"
+  "net/http/httputil"
+  //"io/ioutil"
+	//"os"
   //"reflect"
 )
 
@@ -15,13 +18,15 @@ func main() {
 	var input_url = flag.String("url", "default", "URL")
 	flag.Parse()
 
-	fmt.Printf("URL: %s \n", *input_url)
+	fmt.Println("URL:")
+  fmt.Printf("  %s \n\n", *input_url)
 
 	u, err := url.Parse(*input_url)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Host: %s\n", u.Host)
+	fmt.Println("Host:")
+	fmt.Printf("  %s\n\n", u.Host)
 
   i, err := net.LookupIP(u.Host)
   if err != nil {
@@ -30,17 +35,27 @@ func main() {
   fmt.Println("IPAddress:")
 //  fmt.Println(reflect.TypeOf(i))
 
-  for k, v := range i{
-    fmt.Printf("  %d: %s\n", k, v)
+  for _, v := range i{
+    fmt.Printf("  %s\n", v)
   }
+  fmt.Println("")
 
+  fmt.Println("ResolveHostName:")
 
-//  uh, err := net.LookupIP(i)
-//  if err != nil {
-//    log.Fatal(err)
+//  for _, v := range i{
+//    uh, err := net.LookupIP(v)
+//    if err != nil {
+//      log.Fatal(err)
+//    }
+//    fmt.Printf("  %s:", uh)
 //  }
+
+//  req, _ := http.NewRequest("GET", *input_url, nil)
 //
-//  fmt.Printf("A recoard: %s\n", uh)
+//  dump, _ := httputil.DUmpRequestOut(req, true)
+//  fmt.Printf("%s", dump)
+//
+
 
 
 }
